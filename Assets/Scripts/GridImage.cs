@@ -34,7 +34,11 @@ public class GridImage : MonoBehaviour
     /// </summary>
     public void Reset()
     {
-        _canvasGroup.alpha = 0;
+        try
+        {
+            _canvasGroup.alpha = 0;
+        }
+        catch { }
     }
 
     /// <summary>

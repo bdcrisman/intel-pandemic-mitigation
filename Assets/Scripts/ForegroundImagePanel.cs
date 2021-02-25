@@ -46,8 +46,13 @@ public class ForegroundImagePanel : MonoBehaviour
     {
         IsReady = false;
         _textureIndex = 0;
-        _canvasGroup.alpha = 0;
         _gridImagesPanel.ResetImageContainers();
+
+        try
+        {
+            _canvasGroup.alpha = 0;
+        }
+        catch { }
     }
 
     /// <summary>

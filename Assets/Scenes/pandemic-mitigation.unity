@@ -9545,6 +9545,7 @@ GameObject:
   - component: {fileID: 596874365}
   - component: {fileID: 596874367}
   - component: {fileID: 596874368}
+  - component: {fileID: 596874369}
   m_Layer: 5
   m_Name: DeltaPanel
   m_TagString: Untagged
@@ -9566,7 +9567,7 @@ RectTransform:
   - {fileID: 428865742}
   - {fileID: 236879525}
   m_Father: {fileID: 1821123283}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9680,6 +9681,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &596874369
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596874363}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &606375765
 GameObject:
   m_ObjectHideFlags: 0
@@ -24352,7 +24365,7 @@ RectTransform:
   - {fileID: 1099429762}
   - {fileID: 591457140}
   m_Father: {fileID: 1821123283}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26606,8 +26619,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1666666570}
   - {fileID: 596874364}
+  - {fileID: 1666666570}
   - {fileID: 948375318}
   m_Father: {fileID: 1196638259}
   m_RootOrder: 3

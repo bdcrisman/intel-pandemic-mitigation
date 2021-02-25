@@ -24,10 +24,10 @@ public class SceneAnimManager : MonoBehaviour
                 break;
 
             case StateType.Loaded:
+                _anim.SetTrigger("Scene1");
                 break;
 
             case StateType.Scene1:
-                _anim.SetTrigger("Scene1");
                 break;
 
             case StateType.Scene2:

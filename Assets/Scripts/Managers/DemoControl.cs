@@ -89,6 +89,10 @@ public class DemoControl : ConfigControl
         switch(_curPhase)
         {
             case StateType.Init:
+                LoadState(StateType.Loaded);
+                break;
+
+            case StateType.Loaded:
                 LoadState(StateType.Scene1);
                 break;
 

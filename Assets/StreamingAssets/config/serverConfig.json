@@ -1,0 +1,58 @@
+{
+  "baseFPS": 30,
+  "demoTimerSeconds": 30,
+  "servers": [
+    {
+      "name": "Cur Gen Server",
+      "ssh": {
+        "ip": "",
+        "user": "",
+        "password": "",
+        "workloadCmd": "",
+        "logCmd": "tail -n 4 curgen.txt",
+        "timeoutMS": 2000
+      },
+      "meter": {
+        "max": 115
+      },
+      "flags": {
+        "isFutureGen": false,
+        "runBackup": false
+      },
+      "delays": {
+        "loopDelayMS": 1500,
+        "startingWorkloadDelayMS": 2000
+      },
+      "backup": {
+        "target": 30,
+        "offsetPercentage": 2
+      }
+    },
+    {
+      "name": "Next Gen Server",
+      "ssh": {
+        "ip": "",
+        "user": "",
+        "password": "",
+        "workloadCmd": "",
+        "logCmd": "tail -n 4 nextgen.txt",
+        "timeoutMS": 2000
+      },
+      "meter": {
+        "max": 125
+      },
+      "flags": {
+        "isFutureGen": true,
+        "runBackup": false
+      },
+      "delays": {
+        "loopDelayMS": 1500,
+        "startingWorkloadDelayMS": 2000
+      },
+      "backup": {
+        "target": 115,
+        "offsetPercentage": 2
+      }
+    }
+  ]
+}

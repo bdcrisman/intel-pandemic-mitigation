@@ -1,0 +1,14 @@
+{
+  "demoTitle": "Intel Pandemic Mitigation",
+  "leftProductLabel": "2nd Gen Xeon Scalable Processor",
+  "rightProductLabel": "3rd Gen Xeon Scalable Processor",
+  "deltaLabel": "Speed Up",
+  "deltaUnits": "x",
+  "meterUnits": "FPS",
+  "extraStreamsCount": "+4",
+  "extraStreamsLabel": "Streams",
+  "loadingImagesLabel": "Loading",
+  "startingWorkloadLabel": "loading benchmark...",
+  "scene2MediaOffsetRangeMin": 0,
+  "scene2MediaOffsetRangeMax": 100
+}

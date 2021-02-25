@@ -9166,6 +9166,7 @@ GameObject:
   - component: {fileID: 581507723}
   - component: {fileID: 581507722}
   - component: {fileID: 581507724}
+  - component: {fileID: 581507725}
   m_Layer: 5
   m_Name: TitlePanel
   m_TagString: Untagged
@@ -9249,6 +9250,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &581507725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581507720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46571d504321987409af2c46d8631a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &582195416
 GameObject:
   m_ObjectHideFlags: 0

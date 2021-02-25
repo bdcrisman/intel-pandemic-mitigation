@@ -58,7 +58,7 @@ public class DemoControl : ConfigControl
         if (Input.GetKeyUp(KeyCode.Space) && _timer >= ButtonDelay)
         {
             _timer = 0f;
-            LoadState(_curPhase == StateType.Init
+            LoadState(_curPhase == StateType.Loaded
                 ? StateType.Scene1
                 : _curPhase == StateType.Scene1
                     ? StateType.Scene2 : StateType.None);
@@ -98,6 +98,9 @@ public class DemoControl : ConfigControl
         {
             case StateType.Init:
                 InitPhase();
+                break;
+
+            case StateType.Loaded:
                 break;
 
             case StateType.Scene1:
@@ -182,6 +185,8 @@ public class DemoControl : ConfigControl
         _workloadControl.Setup(DemoConfig, ServerConfig);
 
         yield return StartCoroutine(_mediaControl.LoadClassifiedImages());
+
+        LoadState(StateType.Loaded);
 
         _loadingManager.Deactivate();
         _canProgress = true;

@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 
-public class SceneAnimManager : MonoBehaviour
+public class TitlePanelManager : MonoBehaviour
 {
-    [SerializeField]
     private Animator _anim;
+
+    private void Awake()
+    {
+        _anim = GetComponent<Animator>();
+    }
 
     private void OnEnable()
     {
@@ -17,21 +21,10 @@ public class SceneAnimManager : MonoBehaviour
 
     private void OnStateUpdated(object sender, StateType state)
     {
-        switch (state)
+        switch(state)
         {
-            case StateType.Init:
-                _anim.SetTrigger("Init");
-                break;
-
             case StateType.Loaded:
-                break;
-
-            case StateType.Scene1:
-                _anim.SetTrigger("Scene1");
-                break;
-
-            case StateType.Scene2:
-                _anim.SetTrigger("Scene2");
+                _anim.SetTrigger("Activate");
                 break;
 
             default:

@@ -24,6 +24,7 @@ public class TitlePanelManager : MonoBehaviour
         switch(state)
         {
             case StateType.Loaded:
+                print("title");
                 _anim.SetTrigger("Activate");
                 break;
 

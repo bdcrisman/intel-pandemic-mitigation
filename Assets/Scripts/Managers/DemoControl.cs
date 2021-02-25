@@ -31,6 +31,11 @@ public class DemoControl : ConfigControl
     private float _timer = 0f;
     private bool _canProgress = false;
 
+    private void OnEnable()
+    {
+        _loadingManager.Finished += OnLoadingFinished;
+    }
+
     private IEnumerator Start()
     {
         _curPhase = StateType.Init;
@@ -70,6 +75,13 @@ public class DemoControl : ConfigControl
         _cts?.Cancel();
         _workloadControl.StopWorkloads();
         _performance.StopPerformance();
+
+        _loadingManager.Finished -= OnLoadingFinished;
+    }
+
+    private void OnLoadingFinished(object sender, EventArgs e)
+    {
+        LoadState(StateType.Loaded);
     }
 
     public void NextPhase()
@@ -185,8 +197,6 @@ public class DemoControl : ConfigControl
         _workloadControl.Setup(DemoConfig, ServerConfig);
 
         yield return StartCoroutine(_mediaControl.LoadClassifiedImages());
-
-        LoadState(StateType.Loaded);
 
         _loadingManager.Deactivate();
         _canProgress = true;

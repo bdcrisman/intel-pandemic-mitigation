@@ -68,8 +68,6 @@ public class MediaControl : MonoBehaviour
             }
             Resources.UnloadUnusedAssets();
         }
-
-        print(_texturesToLoadCount);
     }
 
     /// <summary>

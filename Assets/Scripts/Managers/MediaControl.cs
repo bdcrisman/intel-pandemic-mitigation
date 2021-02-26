@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -20,20 +21,6 @@ public class MediaControl : MonoBehaviour
         }
     }
 
-    public Texture2D GetTextureAt(ref int index)
-    {
-        if (TextureUtility.Textures == null || TextureUtility.Textures.Count <= 0)
-            return null;
-
-        if (index >= TextureUtility.Textures.Count || index <= 0)
-            index = 0;
-
-        var t = TextureUtility.Textures[index];
-        ++index;
-
-        return t;
-    }
-
     /// <summary>
     /// Sets up the media with the given server data config model.
     /// </summary>
@@ -47,8 +34,6 @@ public class MediaControl : MonoBehaviour
         if (paths == null)
             yield break;
 
-        paths = paths.OrderBy(s => s).ToList();
-
         var loadedCount = 1;
         _texturesToLoadCount = paths.Count;
 
@@ -61,12 +46,13 @@ public class MediaControl : MonoBehaviour
             TextureUtility.ResetTextures();
             foreach (var path in paths)
             {
-                yield return StartCoroutine(LoadImage(path, _texturesToLoadCount));
+                yield return StartCoroutine(LoadImage(path));
 
                 _loadingBar.Set((float)loadedCount / _texturesToLoadCount);
                 ++loadedCount;
             }
             Resources.UnloadUnusedAssets();
+            TextureUtility.OrderByAscending();
         }
     }
 
@@ -76,7 +62,7 @@ public class MediaControl : MonoBehaviour
     /// <param name="path"></param>
     /// <param name="t"></param>
     /// <returns></returns>
-    private IEnumerator LoadImage(string path, int count)
+    private IEnumerator LoadImage(string path)
     {
         if (string.IsNullOrEmpty(path))
         {
@@ -90,6 +76,7 @@ public class MediaControl : MonoBehaviour
         }
 
         t.Compress(true);
-        TextureUtility.AddTexture(t, count);
+        t.name = Path.GetFileName(path);
+        TextureUtility.AddTexture(t);
     }
 }

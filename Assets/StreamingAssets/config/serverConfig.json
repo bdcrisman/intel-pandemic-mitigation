@@ -21,7 +21,7 @@
       },
       "delays": {
         "loopDelayMS": 1500,
-        "startingWorkloadDelayMS": 2000
+        "startingWorkloadDelayMS": 0
       },
       "backup": {
         "target": 30,
@@ -47,7 +47,7 @@
       },
       "delays": {
         "loopDelayMS": 1500,
-        "startingWorkloadDelayMS": 2000
+        "startingWorkloadDelayMS": 0
       },
       "backup": {
         "target": 115,

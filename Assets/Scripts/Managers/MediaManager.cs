@@ -28,8 +28,9 @@ public class MediaManager : MonoBehaviour
     /// <summary>
     /// Setup the managers.
     /// </summary>
-    public void Setup()
+    public void Setup(bool isNextGen)
     {
+        _classifiedForefrontImage.IsNextGen = isNextGen;
         _heroMediaContainer.Setup();
     }
 

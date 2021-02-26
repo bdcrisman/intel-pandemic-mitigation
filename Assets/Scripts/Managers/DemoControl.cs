@@ -180,6 +180,7 @@ public class DemoControl : ConfigControl
     public void ReloadDemo()
     {
         LogUtility.Log.Log("Reloading demo.");
+
         _cts?.Cancel();
         _workloadControl.StopWorkloads();
         _performance.StopPerformance();

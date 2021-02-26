@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class ForegroundImagePanel : MonoBehaviour
 {
     public bool IsReady { get; set; }
+    public bool IsNextGen { get; set; }
 
     [SerializeField]
     private GridImagesPanel _gridImagesPanel;
@@ -62,6 +63,8 @@ public class ForegroundImagePanel : MonoBehaviour
     {
         var t = TextureUtility.GetTexture(ref _textureIndex);
         ++_textureIndex;
+
+        
 
         //(float ratio, RescaleType rescaleType) = ImageLoaderUtility.RescaleRatio(t);
         //switch (rescaleType)

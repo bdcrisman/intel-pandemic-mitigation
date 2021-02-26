@@ -97,6 +97,7 @@ public class WorkloadManager : MonoBehaviour
         }
         _isrunning = true;
 
+        // todo: loading benchmark anim
         if (_loadingBenchmarkAnim)
             _loadingBenchmarkAnim.SetActive(true);
 
@@ -118,7 +119,7 @@ public class WorkloadManager : MonoBehaviour
         // Run the meter
         RunMeter(value);
 
-        _mediaManager.Setup();
+        _mediaManager.Setup(IsFutureGen);
 
         // Run the media animation
         Task.Run(() => _mediaManager.RunMediaLoopAsync(_serverData.Flags.IsFutureGen, _baseFPS, token), token);

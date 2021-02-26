@@ -111,7 +111,7 @@ public class WorkloadManager : MonoBehaviour
             while (!_futureGenReady)
                 await Task.Delay(100, token);
 
-        await Task.Delay(_serverData.Delays.StartingWorkloadDelayMS, token);
+        //await Task.Delay(_serverData.Delays.StartingWorkloadDelayMS, token);
 
         if (_loadingBenchmarkAnim)
             _loadingBenchmarkAnim.SetActive(false);
@@ -125,7 +125,7 @@ public class WorkloadManager : MonoBehaviour
         Task.Run(() => _mediaManager.RunMediaLoopAsync(_serverData.Flags.IsFutureGen, _baseFPS, token), token);
 
         // Finally, run the workload.
-        RunWorkloadAsync(token);
+        //RunWorkloadAsync(token);
 
         while (!token.IsCancellationRequested && _isrunning)
         {

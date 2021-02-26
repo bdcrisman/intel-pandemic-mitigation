@@ -7,7 +7,7 @@
   "meterUnits": "FPS",
   "extraStreamsCount": "+4",
   "extraStreamsLabel": "Streams",
-  "loadingImagesLabel": "Loading",
+  "loadingImagesLabel": "Loading...",
   "startingWorkloadLabel": "loading benchmark...",
   "scene2MediaOffsetRangeMin": 0,
   "scene2MediaOffsetRangeMax": 100

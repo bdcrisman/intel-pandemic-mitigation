@@ -88,6 +88,9 @@ public class SshDataModel
     [JsonProperty("ip")]
     public readonly string IP;
 
+    [JsonProperty("port")]
+    public readonly string Port;
+
     [JsonProperty("user")]
     public readonly string User;
 
@@ -125,16 +128,23 @@ public class BackupDataModel
     {
         get
         {
-            var offset = OffsetPercentage * 0.01f;
-            return UnityEngine.Random.Range(Target * (1 - offset), Target);
+            var v = UnityEngine.Random.Range(_min, Target); 
+            return v;
         }
     }
 
     [JsonProperty("target")]
-    public readonly float Target;
+    public float Target { get; set; }
 
     [JsonProperty("offsetPercentage")]
-    public readonly float OffsetPercentage;
+    public float OffsetPercentage { get; set; }
+
+    public void SetBackup()
+    {
+        _min = Target - (Target * OffsetPercentage * 0.01f);
+    }
+
+    private float _min;
 }
 
 public class DelaysDataModel

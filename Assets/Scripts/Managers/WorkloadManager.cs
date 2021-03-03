@@ -102,7 +102,16 @@ public class WorkloadManager : MonoBehaviour
             _loadingBenchmarkAnim.SetActive(true);
 
         // Get log value
-        float value = ParseValue(await GetLogValueAsync());
+        string logValStr = await GetLogValueAsync();
+        float parsedVal = ParseValue(logValStr);
+        bool success = false;
+
+        if (parsedVal > 0)
+        {
+            success = true;
+            _serverData.BackupData.Target = parsedVal;
+        }
+        _serverData.BackupData.SetBackup();
 
         // Wait for future gen to complete
         if (_serverData.Flags.IsFutureGen)
@@ -116,8 +125,8 @@ public class WorkloadManager : MonoBehaviour
         if (_loadingBenchmarkAnim)
             _loadingBenchmarkAnim.SetActive(false);
 
-        // Run the meter
-        RunMeter(value);
+        // Run the 
+        RunMeter(success ? parsedVal : _serverData.BackupData.Value);
 
         _mediaManager.Setup(IsFutureGen);
 
@@ -147,7 +156,7 @@ public class WorkloadManager : MonoBehaviour
             try
             {
                 await Task.Run(() => SshUtility.ExecuteCommand(
-                    s.IP, s.User, s.Password, s.WorkloadCmd, s.TimeoutMS), token);
+                    s.IP, int.Parse(s.Port), s.User, s.Password, s.WorkloadCmd, s.TimeoutMS), token);
             }
             catch (Exception e)
             {
@@ -170,9 +179,7 @@ public class WorkloadManager : MonoBehaviour
             try
             {
                 result = await Task.Run(() => SshUtility.ResultExecuteCommand(
-                    s.IP, s.User, s.Password, s.LogCmd, s.TimeoutMS));
-
-                print(result);
+                    s.IP, int.Parse(s.Port), s.User, s.Password, s.LogCmd, s.TimeoutMS));
             }
             catch (Exception e)
             {
@@ -196,7 +203,7 @@ public class WorkloadManager : MonoBehaviour
         try
         {
             result = await Task.Run(() => SshUtility.ResultExecuteCommand(
-                s.IP, s.User, s.Password, cmd, s.TimeoutMS));
+                s.IP, int.Parse(s.Port), s.User, s.Password, cmd, s.TimeoutMS));
         }
         catch (Exception e)
         {
@@ -213,29 +220,22 @@ public class WorkloadManager : MonoBehaviour
     /// <returns></returns>
     private float ParseValue(string s)
     {
-        var value = 0f;
+        if (float.TryParse(s, out var val))
+            return val;
+        return 0;
 
-        try
-        {
-            try
-            {
-                value = float.Parse(s.Split('\n').ToList()
-                    .Where(line => line.ToLower().Contains("total fps"))
-                    .FirstOrDefault()
-                    .Split(':').ToList()[1]);
-            }
-            catch { }
+        //var value = 0f;
 
-            var offset = _serverData.BackupData.OffsetPercentage * 0.01f;
-            var target = _serverData.BackupData.Target;
-            var bu = new List<float> { target - (target * offset), target + (target * offset) };
+        //try
+        //{
+        //    return float.Parse(s.Trim()); 
 
-            return value >= bu[0] && value <= bu[1] ? value : _serverData.BackupData.Value;
-        }
-        catch (Exception e)
-        { }
 
-        return _serverData.BackupData.Value;
+        //    return value > 0 ? value : _serverData.BackupData.Value;
+        //}
+        //catch { }
+
+        //return _serverData.BackupData.Value;
     }
 
     /// <summary>

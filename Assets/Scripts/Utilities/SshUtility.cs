@@ -9,11 +9,11 @@ public class SshUtility
     /// <param name="ip"></param>
     /// <param name="s"></param>
     /// <returns></returns>
-    public static void ExecuteCommand(string ip, string user, string pwd, string cmd, int timeoutMS)
+    public static void ExecuteCommand(string ip, int port,  string user, string pwd, string cmd, int timeoutMS)
     {
         try
         {
-            using (var client = new SshClient(GetConnInfo(ip, user, pwd, timeoutMS)))
+            using (var client = new SshClient(GetConnInfo(ip, port, user, pwd, timeoutMS)))
             {
                 client.Connect();
                 client.CreateCommand(cmd).Execute();
@@ -32,13 +32,13 @@ public class SshUtility
     /// <param name="ip"></param>
     /// <param name="s"></param>
     /// <returns></returns>
-    public static string ResultExecuteCommand(string ip, string user, string pwd, string cmd, int timeoutMS)
+    public static string ResultExecuteCommand(string ip, int port, string user, string pwd, string cmd, int timeoutMS)
     {
         var result = string.Empty;
 
         try
         {
-            using (var client = new SshClient(GetConnInfo(ip, user, pwd, timeoutMS)))
+            using (var client = new SshClient(GetConnInfo(ip, port, user, pwd, timeoutMS)))
             {
                 client.Connect();
                 result = client.CreateCommand(cmd).Execute();
@@ -60,9 +60,9 @@ public class SshUtility
     /// <param name="user"></param>
     /// <param name="pwd"></param>
     /// <returns></returns>
-    private static ConnectionInfo GetConnInfo(string ip, string user, string pwd, int timeoutMS)
+    private static ConnectionInfo GetConnInfo(string ip, int port, string user, string pwd, int timeoutMS)
     {
-        var connInfo = new ConnectionInfo(ip, user,
+        var connInfo = new ConnectionInfo(ip, port, user,
             new AuthenticationMethod[]
             {
                 new PasswordAuthenticationMethod(user, pwd)

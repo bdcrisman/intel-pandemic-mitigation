@@ -4,7 +4,7 @@
   "rightProductLabel": "3rd Gen Xeon Scalable Processor",
   "deltaLabel": "Speed Up",
   "deltaUnits": "x",
-  "meterUnits": "FPS",
+  "meterUnits": "IPS",
   "extraStreamsCount": "+4",
   "extraStreamsLabel": "Streams",
   "loadingImagesLabel": "Loading...",

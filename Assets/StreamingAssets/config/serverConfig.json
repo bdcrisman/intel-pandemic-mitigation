@@ -5,13 +5,13 @@
     {
       "name": "Cur Gen Server",
       "ssh": {
-        "ip": "",
+        "ip": "198.175.88.18",
         "port": "",
-        "user": "",
-        "password": "",
+        "user": "demo",
+        "password": "Ml3pcl@yn0$",
         "workloadCmd": "",
-        "logCmd": "",
-        "timeoutMS": 2000
+        "logCmd": "tail -n 4 /home/demo/benchmark_results/ips",
+        "timeoutMS": 30000
       },
       "meter": {
         "max": 4000
@@ -25,7 +25,7 @@
         "startingWorkloadDelayMS": 0
       },
       "backup": {
-        "target": 988,
+        "target": 100,
         "offsetPercentage": 2
       }
     },
@@ -38,7 +38,7 @@
         "password": "g?b3X@Uj",
         "workloadCmd": "",
         "logCmd": "tail -n 4 /root/benchmark_results/ips",
-        "timeoutMS": 2000
+        "timeoutMS": 30000
       },
       "meter": {
         "max": 4000

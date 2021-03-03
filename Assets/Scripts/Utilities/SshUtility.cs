@@ -9,7 +9,7 @@ public class SshUtility
     /// <param name="ip"></param>
     /// <param name="s"></param>
     /// <returns></returns>
-    public static void ExecuteCommand(string ip, int port,  string user, string pwd, string cmd, int timeoutMS)
+    public static void ExecuteCommand(string ip, int port, string user, string pwd, string cmd, int timeoutMS)
     {
         try
         {
@@ -62,14 +62,19 @@ public class SshUtility
     /// <returns></returns>
     private static ConnectionInfo GetConnInfo(string ip, int port, string user, string pwd, int timeoutMS)
     {
-        var connInfo = new ConnectionInfo(ip, port, user,
-            new AuthenticationMethod[]
-            {
-                new PasswordAuthenticationMethod(user, pwd)
-            });
+        var connInfo = port > 0
+            ? new ConnectionInfo(ip, port, user,
+                new AuthenticationMethod[]
+                {
+                    new PasswordAuthenticationMethod(user, pwd)
+                })
+            : new ConnectionInfo(ip, user,
+                new AuthenticationMethod[]
+                {
+                    new PasswordAuthenticationMethod(user, pwd)
+                });
 
         connInfo.Timeout = TimeSpan.FromMilliseconds(timeoutMS);
-
         return connInfo;
     }
 }

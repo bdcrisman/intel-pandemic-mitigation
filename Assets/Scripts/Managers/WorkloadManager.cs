@@ -113,6 +113,8 @@ public class WorkloadManager : MonoBehaviour
         }
         _serverData.BackupData.SetBackup();
 
+        LogUtility.Log.Log($"{(IsFutureGen ? "NextGen" : "CurGen")} live success: {success} :: value: {_serverData.BackupData.Target}");
+
         // Wait for future gen to complete
         if (_serverData.Flags.IsFutureGen)
             _futureGenReady = true;
@@ -155,8 +157,12 @@ public class WorkloadManager : MonoBehaviour
         {
             try
             {
+                int port = 0;
+                if (int.TryParse(s.Port, out var p))
+                    port = p;
+
                 await Task.Run(() => SshUtility.ExecuteCommand(
-                    s.IP, int.Parse(s.Port), s.User, s.Password, s.WorkloadCmd, s.TimeoutMS), token);
+                    s.IP, port, s.User, s.Password, s.WorkloadCmd, s.TimeoutMS), token);
             }
             catch (Exception e)
             {
@@ -176,10 +182,14 @@ public class WorkloadManager : MonoBehaviour
 
         if (!_serverData.Flags.RunBackup)
         {
+            int port = 0;
+            if (int.TryParse(s.Port, out var p))
+                port = p;
+
             try
             {
                 result = await Task.Run(() => SshUtility.ResultExecuteCommand(
-                    s.IP, int.Parse(s.Port), s.User, s.Password, s.LogCmd, s.TimeoutMS));
+                    s.IP, port, s.User, s.Password, s.LogCmd, s.TimeoutMS));
             }
             catch (Exception e)
             {

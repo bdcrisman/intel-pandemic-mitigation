@@ -21,10 +21,14 @@ public class WorkloadManager : MonoBehaviour
     [SerializeField]
     private GameObject _loadingBenchmarkAnim;
 
+    [SerializeField]
+    private Image _backupIndicator;
+
     private BackupDataModel _backupData;
     private ServerDataModel _serverData;
     private float _baseFPS;
     private bool _isrunning = false;
+    private bool _displayIndicators;
 
     private static bool _futureGenReady = false;
 
@@ -32,6 +36,8 @@ public class WorkloadManager : MonoBehaviour
     {
         if (_loadingBenchmarkAnim)
             _loadingBenchmarkAnim.SetActive(false);
+
+        _backupIndicator.enabled = false;
     }
 
     private void OnDisable()
@@ -44,11 +50,12 @@ public class WorkloadManager : MonoBehaviour
     /// Sets up the workload manager.
     /// </summary>
     /// <param name="s"></param>
-    public void Setup(ServerDataModel s, string startingWorkloadText, float baseFPS)
+    public void Setup(ServerDataModel s, string startingWorkloadText, float baseFPS, bool displayIndicators)
     {
         _serverData = s;
         _baseFPS = baseFPS;
         _backupData = s.BackupData;
+        _displayIndicators = displayIndicators;
         _meterManager.Setup(_serverData.MeterData);
         IsFutureGen = _serverData.Flags.IsFutureGen;
 
@@ -105,6 +112,8 @@ public class WorkloadManager : MonoBehaviour
         string logValStr = await GetLogValueAsync();
         float parsedVal = ParseValue(logValStr);
         bool success = false;
+
+        _backupIndicator.enabled = _displayIndicators && string.IsNullOrWhiteSpace(logValStr);
 
         if (parsedVal > 0)
         {

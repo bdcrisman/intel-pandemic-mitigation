@@ -23,8 +23,8 @@ public class WorkloadControl : MonoBehaviour
             return;
         }
 
-        _leftWorkloadManager.Setup(sc.ServerData[0], dc.StartingWorkloadLabel, sc.BaseFPS);
-        _rightWorkloadManager.Setup(sc.ServerData[1], dc.StartingWorkloadLabel, sc.BaseFPS);
+        _leftWorkloadManager.Setup(sc.ServerData[0], dc.StartingWorkloadLabel, sc.BaseFPS, dc.DisplayIndicators);
+        _rightWorkloadManager.Setup(sc.ServerData[1], dc.StartingWorkloadLabel, sc.BaseFPS, dc.DisplayIndicators);
     }
 
     /// <summary>

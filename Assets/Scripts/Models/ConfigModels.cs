@@ -48,6 +48,9 @@ public class DemoConfigModel
 
     [JsonProperty("scene2MediaOffsetRangeMax")]
     public readonly int Scene2MediaOffsetRangeMax;
+
+    [JsonProperty("displayIndicators")]
+    public readonly bool DisplayIndicators;
 }
 
 public class ServerConfigModel

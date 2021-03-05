@@ -9,6 +9,7 @@
   "extraStreamsLabel": "Streams",
   "loadingImagesLabel": "Loading...",
   "startingWorkloadLabel": "loading benchmark...",
+  "disclaimer": "For more information on this demo, please visit www.intel.com/benchmarks",
   "scene2MediaOffsetRangeMin": 0,
   "scene2MediaOffsetRangeMax": 100
 }

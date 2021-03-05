@@ -18,6 +18,9 @@ public class DemoSetup : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _loadingLabel;
 
+    [SerializeField]
+    private TextMeshProUGUI _disclaimer;
+
     /// <summary>
     /// Sets up the demo.
     /// </summary>
@@ -30,5 +33,6 @@ public class DemoSetup : MonoBehaviour
         _rightProductLabel.text = d.RightProductLabel;
         _meterUnits.text = d.MeterUnits;
         _loadingLabel.text = d.LoadingImagesLabel;
+        _disclaimer.text = d.Disclaimer;
     }
 }

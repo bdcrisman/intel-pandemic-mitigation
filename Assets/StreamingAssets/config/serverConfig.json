@@ -1,6 +1,5 @@
 {
-  "baseFPS": 90,
-  "demoTimerSeconds": 30,
+  "baseFPS": 30,
   "servers": [
     {
       "name": "Cur Gen Server",

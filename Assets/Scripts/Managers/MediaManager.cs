@@ -60,9 +60,13 @@ public class MediaManager : MonoBehaviour
                 await Task.Delay(baseDelayMS);
             }
             else
-            {    
-                var delta = Mathf.RoundToInt(DeltaManager.Delta);
-                await Task.Delay(baseDelayMS * (delta > 0 ? delta : 1));
+            {
+                var d = DeltaManager.Delta;
+                if (d <= 0)
+                    d = 1;
+
+                var delayMS = Mathf.RoundToInt(d * baseDelayMS);
+                await Task.Delay(delayMS, token); // baseDelayMS * (delta > 0 ? delta : 1));
             }
         }
 

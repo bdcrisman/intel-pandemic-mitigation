@@ -40,6 +40,9 @@ public class DemoConfigModel
     [JsonProperty("startingWorkloadLabel")]
     public readonly string StartingWorkloadLabel;
 
+    [JsonProperty("disclaimer")]
+    public readonly string Disclaimer;
+
     [JsonProperty("scene2MediaOffsetRangeMin")]
     public readonly int Scene2MediaOffsetRangeMin;
 
@@ -54,9 +57,6 @@ public class ServerConfigModel
 
     [JsonProperty("baseFPS")]
     public readonly float BaseFPS;
-
-    [JsonProperty("demoTimerSeconds")]
-    public readonly int DemoTimerSeconds;
 
     [JsonProperty("servers")]
     public readonly List<ServerDataModel> ServerData;

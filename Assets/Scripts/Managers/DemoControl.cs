@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class DemoControl : ConfigControl
 {
@@ -25,6 +26,9 @@ public class DemoControl : ConfigControl
 
     [SerializeField]
     private MediaControl _mediaControl;
+
+    [SerializeField]
+    private TextMeshProUGUI _disclaimer;
 
     private CancellationTokenSource _cts;
     private StateType _curPhase = StateType.Init;
@@ -117,6 +121,8 @@ public class DemoControl : ConfigControl
                 break;
 
             case StateType.Loaded:
+                print("loaded");
+                _disclaimer.enabled = true;
                 break;
 
             case StateType.Scene1:
@@ -168,6 +174,8 @@ public class DemoControl : ConfigControl
     {
         LogUtility.Log.Log("Initializing demo.");
 
+        _disclaimer.enabled = false;
+
         if (!LoadConfig())
         {
             LogUtility.Log.Log("Exiting, error loading configs.");
@@ -215,6 +223,7 @@ public class DemoControl : ConfigControl
     {
         LogUtility.Log.Log("Reinitializing demo...");
 
+        _disclaimer.enabled = false;
         try
         {
             LoadConfig();

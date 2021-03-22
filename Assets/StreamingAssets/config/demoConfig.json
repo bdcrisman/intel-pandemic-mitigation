@@ -5,7 +5,7 @@
   "deltaLabel": "Speed Up",
   "deltaUnits": "x",
   "meterUnits": "IPS",
-  "extraStreamsCount": "+4",
+  "extraStreamsCount": "+5",
   "extraStreamsLabel": "Streams",
   "loadingImagesLabel": "Loading...",
   "startingWorkloadLabel": "loading benchmark...",

@@ -21,6 +21,12 @@ public class DemoSetup : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _disclaimer;
 
+    [SerializeField]
+    private TextMeshProUGUI _additionalStreamsLabel;
+
+    [SerializeField]
+    private TextMeshProUGUI _streamsLabel;
+
     /// <summary>
     /// Sets up the demo.
     /// </summary>
@@ -34,5 +40,7 @@ public class DemoSetup : MonoBehaviour
         _meterUnits.text = d.MeterUnits;
         _loadingLabel.text = d.LoadingImagesLabel;
         _disclaimer.text = d.Disclaimer;
+        _additionalStreamsLabel.text = d.ExtraStreamsCount;
+        _streamsLabel.text = d.ExtraStreamsLabel;
     }
 }

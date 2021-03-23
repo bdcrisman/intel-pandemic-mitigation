@@ -9697,6 +9697,8 @@ MonoBehaviour:
   _meterUnits: {fileID: 639922350}
   _loadingLabel: {fileID: 934572922}
   _disclaimer: {fileID: 936245691}
+  _additionalStreamsLabel: {fileID: 1865345351}
+  _streamsLabel: {fileID: 540257910}
 --- !u!114 &582621900
 MonoBehaviour:
   m_ObjectHideFlags: 0
